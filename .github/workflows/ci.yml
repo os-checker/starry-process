@@ -28,6 +28,10 @@ jobs:
         run: cargo clippy --all-features --all-targets -- -Dwarnings
       - name: Test
         run: cargo test --all-features
+      - name: Miri
+        run: | 
+          rustup component add miri
+          cargo miri test
 
   doc:
     runs-on: ubuntu-latest
